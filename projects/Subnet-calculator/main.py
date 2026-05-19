@@ -60,14 +60,18 @@ def calculate_usable_range(net_addr, broad_addr):
 
     return net_addr, broad_addr
 # calculate subnet mask
-def calculate_subnet_mask(var_octet):
+def calculate_subnet_mask(cidr):
     submask = []
-    for x in range(0, 4):  
-        if x != var_octet:
+    for _ in range(4):
+        if cidr >= 8:
             submask.append(255)
+            cidr -= 8
         else:
-            submask.append(0)
-            var_octet += 1
+            # Calculate the value of the partial octet 
+            # e.g., a remainder of 2 bits = 11000000 in binary = 192
+            partial_octet = 256 - (2 ** (8 - cidr)) if cidr > 0 else 0
+            submask.append(partial_octet)
+            cidr = 0
     return submask
 # turns lists to string
 def display(list):
@@ -83,7 +87,7 @@ while True:
         # split ip and cidr
         cidr = int(re.split(r'/', entry)[1])
         ip_addr = tuple([ int(x) for x in re.split(r"\.", re.split(r'/', entry)[0])]) # split ip into list of octets, convert each item into an int and convert the list into a tuple
-        if 1 <= cidr <= 32:
+        if 1 <= cidr <= 32 and len(ip_addr) == 4:
             check = 0 # basically a check for each octet
             for x in range(0, 4):
                 if 0 <= ip_addr[x] <= 255:
@@ -107,12 +111,18 @@ increment = calculate_increment(cidr)
 network_address = calculate_network_address(ip_addr, var_octet, increment)
 # calculate broadcast address
 broadcast_address = calculate_broadcast_address(ip_addr, var_octet, increment)
-# calculate usable range
-usable_range_lower_lim, usable_range_upper_lim = calculate_usable_range(tuple(network_address), tuple(broadcast_address))
-# calculate number of devices 
-total_host = (2 ** (32 - cidr)) - 2 # account for the reserved addresses
+# calculate usable range and total hosts
+if cidr == 32:
+    total_host = 1
+    usable_range_lower_lim, usable_range_upper_lim = ip_addr, ip_addr
+elif cidr == 31:
+    total_host = 2
+    usable_range_lower_lim, usable_range_upper_lim = network_address, broadcast_address
+else:
+    total_host = (2 ** (32 - cidr)) - 2
+    usable_range_lower_lim, usable_range_upper_lim = calculate_usable_range(network_address, broadcast_address)
 # calculate subnet mask
-subnet_mask = calculate_subnet_mask(var_octet)
+subnet_mask = calculate_subnet_mask(cidr)
 
 
 print(f"IP Address: {display(list(ip_addr))}" )
