@@ -1,0 +1,5 @@
+import subprocess
+
+ping = subprocess.run(['ping', '127.0.0.1'], capture_output= True, text= True)
+
+print(ping.returncode)
