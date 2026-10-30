@@ -1,0 +1,24 @@
+Oct 27 09:44:24.257 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Oct 27 09:44:24.292 HYPERVISOR: Started on IP = localhost, TCP port = 53673.
+Oct 27 09:44:24.374 HYPERVISOR: exec_cmd: hypervisor version 
+Oct 27 09:44:24.376 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\iloha\GNS3\projects\NOC Monitoring Lab\project-files\dynamips 
+Oct 27 09:44:24.672 GENERAL: working_dir=C:\Users\iloha\GNS3\projects\NOC Monitoring Lab\project-files\dynamips
+Oct 27 09:44:24.673 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\iloha\GNS3\projects\NOC Monitoring Lab\project-files\dynamips\106fc6ad-fde1-4794-a5d6-55771f6c7131 
+Oct 27 09:44:24.681 GENERAL: working_dir=C:\Users\iloha\GNS3\projects\NOC Monitoring Lab\project-files\dynamips\106fc6ad-fde1-4794-a5d6-55771f6c7131
+Oct 27 09:44:24.682 HYPERVISOR: exec_cmd: vm create R1 1 c3600 
+Oct 27 09:44:24.688 VM: VM R1 created.
+Oct 27 09:44:24.689 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5000 
+Oct 27 09:44:24.689 HYPERVISOR: exec_cmd: c3600 get_mac_addr R1 
+Oct 27 09:44:24.691 HYPERVISOR: exec_cmd: c3600 set_chassis R1 3660 
+Oct 27 09:44:24.693 HYPERVISOR: exec_cmd: vm set_exec_area R1 64 
+Oct 27 09:44:24.694 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/iloha/GNS3/images/IOS/c3660-jk9o3s-mz.124-25d.image 
+Oct 27 09:44:24.695 HYPERVISOR: exec_cmd: vm set_nvram R1 256 
+Oct 27 09:44:24.696 HYPERVISOR: exec_cmd: vm set_ram R1 192 
+Oct 27 09:44:24.817 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/iloha/GNS3/images/IOS/c3660-jk9o3s-mz.124-25d.image 
+Oct 27 09:44:31.944 HYPERVISOR: exec_cmd: vm get_status R1 
+Oct 27 09:44:31.946 HYPERVISOR: exec_cmd: vm extract_config R1 
+Oct 27 09:44:31.948 HYPERVISOR: exec_cmd: vm delete R1 
+Oct 27 09:44:31.949 VM: VM R1 destroyed.
+Oct 27 09:44:31.953 HYPERVISOR: exec_cmd: hypervisor stop 
+Oct 27 09:44:32.080 HYPERVISOR: Stopped.
+Oct 27 09:44:32.080 GENERAL: reset done.
