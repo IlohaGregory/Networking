@@ -1,4 +1,4 @@
-# NOC Lab 01: SNMP Monitoring and Incident Response with PRTG
+# SNMP Monitoring and Incident Response with PRTG
 
 ## Objective
 

@@ -1,4 +1,4 @@
-# NOC Lab 02: Multiple Device Monitoring with PRTG
+# Multiple Device Monitoring with PRTG
 
 ## Objective
 
